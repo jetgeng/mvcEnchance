@@ -14,7 +14,7 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 import java.lang.reflect.Array;
@@ -45,7 +45,7 @@ public class MaxSizeConstraint extends AbstractConstraint {
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof Integer)) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-                    ConstrainedPropertyQunar.MAX_SIZE_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.MAX_SIZE_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must be a of type [java.lang.Integer]");
         }
@@ -55,7 +55,7 @@ public class MaxSizeConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.MAX_SIZE_CONSTRAINT;
+        return ConstrainedPropertyGunn.MAX_SIZE_CONSTRAINT;
     }
 
     /* (non-Javadoc)
@@ -84,8 +84,8 @@ public class MaxSizeConstraint extends AbstractConstraint {
 
         if (length > maxSize) {
             Object[] args = { constraintPropertyName, constraintOwningClass, propertyValue, maxSize};
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_MAX_SIZE_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.MAX_SIZE_CONSTRAINT + ConstrainedPropertyQunar.EXCEEDED_SUFFIX, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_MAX_SIZE_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.MAX_SIZE_CONSTRAINT + ConstrainedPropertyGunn.EXCEEDED_SUFFIX, args);
         }
     }
 }

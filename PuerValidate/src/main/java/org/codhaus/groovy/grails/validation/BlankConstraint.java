@@ -1,7 +1,7 @@
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
 import org.apache.commons.lang.StringUtils;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 public class BlankConstraint extends AbstractVetoingConstraint {
@@ -32,7 +32,7 @@ public class BlankConstraint extends AbstractVetoingConstraint {
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof Boolean)) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-                    ConstrainedPropertyQunar.BLANK_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.BLANK_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must be a boolean value");
         }
@@ -42,7 +42,7 @@ public class BlankConstraint extends AbstractVetoingConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.BLANK_CONSTRAINT;
+        return ConstrainedPropertyGunn.BLANK_CONSTRAINT;
     }
 
     @Override
@@ -55,8 +55,8 @@ public class BlankConstraint extends AbstractVetoingConstraint {
         if (propertyValue instanceof String && StringUtils.isBlank((String)propertyValue)) {
             if (!blank) {
                 Object[] args = new Object[] { constraintPropertyName, constraintOwningClass };
-                rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_BLANK_MESSAGE_CODE,
-                		ConstrainedPropertyQunar.BLANK_CONSTRAINT, args);
+                rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_BLANK_MESSAGE_CODE,
+                        ConstrainedPropertyGunn.BLANK_CONSTRAINT, args);
                 // empty string is caught by 'blank' constraint, no addition validation needed
                 return true;
             }

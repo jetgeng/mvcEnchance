@@ -14,8 +14,8 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 /**
@@ -32,7 +32,7 @@ public class NotEqualConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.NOT_EQUAL_CONSTRAINT;
+        return ConstrainedPropertyGunn.NOT_EQUAL_CONSTRAINT;
     }
 
     /* (non-Javadoc)
@@ -41,7 +41,7 @@ public class NotEqualConstraint extends AbstractConstraint {
     @Override
     public void setParameter(Object constraintParameter) {
         if (constraintParameter == null) {
-            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyQunar.NOT_EQUAL_CONSTRAINT +
+            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyGunn.NOT_EQUAL_CONSTRAINT +
                     "] of property [" + constraintPropertyName + "] of class [" +
                     constraintOwningClass + "] cannot be null");
         }
@@ -50,7 +50,7 @@ public class NotEqualConstraint extends AbstractConstraint {
         // TODO: Find an alternative way to do the UrlMapping check!
         if (!GrailsClassUtils.isAssignableOrConvertibleFrom(constraintParameter.getClass(),propertyClass)  && propertyClass != null) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.NOT_EQUAL_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.NOT_EQUAL_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must be the same type as property: [" + propertyClass.getName() + "]");
         }
@@ -68,8 +68,8 @@ public class NotEqualConstraint extends AbstractConstraint {
     protected void processValidate(Object target, Object propertyValue, Errors errors) {
         if (constraintParameter.equals(propertyValue)) {
             Object[] args = new Object[] { constraintPropertyName, constraintOwningClass, propertyValue, constraintParameter };
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_NOT_EQUAL_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.NOT_EQUAL_CONSTRAINT, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_NOT_EQUAL_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.NOT_EQUAL_CONSTRAINT, args);
         }
     }
 }

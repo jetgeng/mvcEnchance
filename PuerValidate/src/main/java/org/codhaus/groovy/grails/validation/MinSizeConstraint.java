@@ -14,7 +14,7 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 import java.lang.reflect.Array;
@@ -44,7 +44,7 @@ public class MinSizeConstraint extends AbstractConstraint {
     @Override
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof Integer)) {
-            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyQunar.MIN_SIZE_CONSTRAINT +
+            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyGunn.MIN_SIZE_CONSTRAINT +
                     "] of property [" + constraintPropertyName + "] of class [" +
                     constraintOwningClass + "] must be a of type [java.lang.Integer]");
         }
@@ -54,7 +54,7 @@ public class MinSizeConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.MIN_SIZE_CONSTRAINT;
+        return ConstrainedPropertyGunn.MIN_SIZE_CONSTRAINT;
     }
 
     /* (non-Javadoc)
@@ -83,8 +83,8 @@ public class MinSizeConstraint extends AbstractConstraint {
 
         if (length < minSize) {
             Object[] args = { constraintPropertyName, constraintOwningClass, propertyValue, minSize};
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_MIN_SIZE_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.MIN_SIZE_CONSTRAINT + ConstrainedPropertyQunar.NOTMET_SUFFIX, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_MIN_SIZE_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.MIN_SIZE_CONSTRAINT + ConstrainedPropertyGunn.NOTMET_SUFFIX, args);
         }
     }
 }

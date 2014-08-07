@@ -1,11 +1,11 @@
 package org.gunn.puer.validate
 
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.BeanWrapper
 import org.springframework.beans.BeanWrapperImpl
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar
 
 
 
@@ -22,7 +22,7 @@ class ValidatorConfigurationBuilder extends BuilderSupport {
 			if(child instanceof ValidateGroup && child.hasProperty("name")  && child.name != null){
 				parent.addGroup(child.name, child)
 			}
-			if(child instanceof ConstrainedPropertyQunar){
+			if(child instanceof ConstrainedPropertyGunn){
 				parent.addConstrained(child)
 			}
 		}
@@ -65,7 +65,7 @@ class ValidatorConfigurationBuilder extends BuilderSupport {
 			Class targetClass = Class.forName(getCurrent().pojoClassName);
 			//TODO 有可能属性不存在。需要check一下
 			BeanWrapper bean = new BeanWrapperImpl(targetClass);
-			ConstrainedPropertyQunar cp = new ConstrainedPropertyQunar(targetClass,name,bean.getPropertyType(name))
+            ConstrainedPropertyGunn cp = new ConstrainedPropertyGunn(targetClass,name,bean.getPropertyType(name))
 			getCurrent().addConstrained(cp)
 			cp.setMessageSource(null);
 			for (Object o : attributes.keySet()) {
@@ -76,7 +76,7 @@ class ValidatorConfigurationBuilder extends BuilderSupport {
 						cp.applyConstraint(constraintName, value);
 					}
 					else {
-						if (ConstrainedPropertyQunar.hasRegisteredConstraint(constraintName)) {
+						if (ConstrainedPropertyGunn.hasRegisteredConstraint(constraintName)) {
 							// constraint is registered but doesn't support this property's type
 						}
 						else {

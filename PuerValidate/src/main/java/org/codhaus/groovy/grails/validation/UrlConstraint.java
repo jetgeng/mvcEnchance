@@ -14,9 +14,9 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.validation.routines.RegexValidator;
-import com.qunar.org.codhaus.groovy.grails.validation.routines.UrlValidator;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
+import org.codhaus.groovy.grails.validation.routines.RegexValidator;
+import org.codhaus.groovy.grails.validation.routines.UrlValidator;
 import org.springframework.validation.Errors;
 
 import java.util.List;
@@ -60,7 +60,7 @@ public class UrlConstraint extends AbstractConstraint {
             domainValidator = new RegexValidator(regexpList.toArray(new String[regexpList.size()]));
         }
         else {
-            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyQunar.URL_CONSTRAINT +
+            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyGunn.URL_CONSTRAINT +
                     "] of property [" + constraintPropertyName + "] of class [" +
                     constraintOwningClass + "] must be a boolean, string, or list value");
         }
@@ -72,7 +72,7 @@ public class UrlConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.URL_CONSTRAINT;
+        return ConstrainedPropertyGunn.URL_CONSTRAINT;
     }
 
     @Override
@@ -83,8 +83,8 @@ public class UrlConstraint extends AbstractConstraint {
 
         if (!validator.isValid(propertyValue.toString())) {
             Object[] args = new Object[]{constraintPropertyName, constraintOwningClass, propertyValue};
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_URL_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.URL_CONSTRAINT + ConstrainedPropertyQunar.INVALID_SUFFIX, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_URL_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.URL_CONSTRAINT + ConstrainedPropertyGunn.INVALID_SUFFIX, args);
         }
     }
 }

@@ -14,7 +14,7 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 /**
@@ -48,7 +48,7 @@ public class MatchesConstraint extends AbstractConstraint {
     @Override
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof String)) {
-            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyQunar.MATCHES_CONSTRAINT +
+            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyGunn.MATCHES_CONSTRAINT +
                     "] of property [" + constraintPropertyName + "] of class [" +
                     constraintOwningClass + "] must be of type [java.lang.String]");
         }
@@ -58,7 +58,7 @@ public class MatchesConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.MATCHES_CONSTRAINT;
+        return ConstrainedPropertyGunn.MATCHES_CONSTRAINT;
     }
 
     @Override
@@ -67,8 +67,8 @@ public class MatchesConstraint extends AbstractConstraint {
             return;
         }
 
-        rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_DOESNT_MATCH_MESSAGE_CODE,
-        		ConstrainedPropertyQunar.MATCHES_CONSTRAINT + ConstrainedPropertyQunar.INVALID_SUFFIX,
+        rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_DOESNT_MATCH_MESSAGE_CODE,
+                ConstrainedPropertyGunn.MATCHES_CONSTRAINT + ConstrainedPropertyGunn.INVALID_SUFFIX,
                 new Object[] { constraintPropertyName, constraintOwningClass, propertyValue, regex });
     }
 }

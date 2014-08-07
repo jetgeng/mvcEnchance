@@ -1,6 +1,5 @@
 package org.gunn.puer.validate
 
-//import org.gunn.spring.validator.dsl.ValidatorRuleBuilder;
 
 class SpringValidatorConfigureationDelegate {
 	//可以直接将Context 放到ValidatorRuleBuilder中就可以了。

@@ -14,8 +14,8 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 /**
@@ -52,20 +52,20 @@ public class MaxConstraint extends AbstractConstraint {
     public void setParameter(Object constraintParameter) {
         if (constraintParameter == null) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-                    ConstrainedPropertyQunar.MAX_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.MAX_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass + "] cannot be null");
         }
 
         if (!(constraintParameter instanceof Comparable<?>) && (!constraintParameter.getClass().isPrimitive())) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.MAX_CONSTRAINT + "] of property [" + constraintPropertyName +
+                    ConstrainedPropertyGunn.MAX_CONSTRAINT + "] of property [" + constraintPropertyName +
                     "] of class ["+constraintOwningClass + "] must implement the interface [java.lang.Comparable]");
         }
 
         Class<?> propertyClass = GrailsClassUtils.getPropertyType(constraintOwningClass, constraintPropertyName);
         if (!GrailsClassUtils.isAssignableOrConvertibleFrom(constraintParameter.getClass(), propertyClass)) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.MAX_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.MAX_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must be the same type as property: [" + propertyClass.getName() + "]");
         }
@@ -75,15 +75,15 @@ public class MaxConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.MAX_CONSTRAINT;
+        return ConstrainedPropertyGunn.MAX_CONSTRAINT;
     }
 
     @Override
     protected void processValidate(Object target, Object propertyValue, Errors errors) {
         if (maxValue.compareTo(propertyValue) < 0) {
             Object[] args = new Object[] { constraintPropertyName, constraintOwningClass, propertyValue, maxValue  };
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_MAX_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.MAX_CONSTRAINT + ConstrainedPropertyQunar.EXCEEDED_SUFFIX, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_MAX_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.MAX_CONSTRAINT + ConstrainedPropertyGunn.EXCEEDED_SUFFIX, args);
         }
     }
 }

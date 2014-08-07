@@ -14,7 +14,7 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 /**
@@ -46,7 +46,7 @@ public class NullableConstraint extends AbstractVetoingConstraint {
     @Override
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof Boolean)) {
-            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyQunar.NULLABLE_CONSTRAINT +
+            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyGunn.NULLABLE_CONSTRAINT +
                     "] of property [" + constraintPropertyName + "] of class [" +
                     constraintOwningClass + "] must be a boolean value");
         }
@@ -56,7 +56,7 @@ public class NullableConstraint extends AbstractVetoingConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.NULLABLE_CONSTRAINT;
+        return ConstrainedPropertyGunn.NULLABLE_CONSTRAINT;
     }
 
     @Override
@@ -69,8 +69,8 @@ public class NullableConstraint extends AbstractVetoingConstraint {
         if (propertyValue == null) {
             if (!nullable) {
                 Object[] args = new Object[] { constraintPropertyName, constraintOwningClass };
-                rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_NULL_MESSAGE_CODE,
-                		ConstrainedPropertyQunar.NULLABLE_CONSTRAINT, args);
+                rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_NULL_MESSAGE_CODE,
+                        ConstrainedPropertyGunn.NULLABLE_CONSTRAINT, args);
                 // null value is caught by 'blank' constraint, no addition validation needed
                 return true;
             }

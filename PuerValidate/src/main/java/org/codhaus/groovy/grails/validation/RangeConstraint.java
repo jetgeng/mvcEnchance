@@ -14,9 +14,9 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.common.GrailsClassUtils;
 import groovy.lang.Range;
+import org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 /**
@@ -51,7 +51,7 @@ public class RangeConstraint extends AbstractConstraint {
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof Range)) {
                 throw new IllegalArgumentException("Parameter for constraint [" +
-                        ConstrainedPropertyQunar.RANGE_CONSTRAINT + "] of property [" +
+                        ConstrainedPropertyGunn.RANGE_CONSTRAINT + "] of property [" +
                         constraintPropertyName + "] of class [" +
                         constraintOwningClass + "] must be a of type [groovy.lang.Range]");
         }
@@ -61,7 +61,7 @@ public class RangeConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.RANGE_CONSTRAINT;
+        return ConstrainedPropertyGunn.RANGE_CONSTRAINT;
     }
 
     @Override
@@ -84,12 +84,12 @@ public class RangeConstraint extends AbstractConstraint {
         }
 
         if (from.compareTo(propertyValue) > 0) {
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_RANGE_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.RANGE_CONSTRAINT + ConstrainedPropertyQunar.TOOSMALL_SUFFIX, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_RANGE_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.RANGE_CONSTRAINT + ConstrainedPropertyGunn.TOOSMALL_SUFFIX, args);
         }
         else if (to.compareTo(propertyValue) < 0) {
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_RANGE_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.RANGE_CONSTRAINT + ConstrainedPropertyQunar.TOOBIG_SUFFIX, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_RANGE_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.RANGE_CONSTRAINT + ConstrainedPropertyGunn.TOOBIG_SUFFIX, args);
         }
     }
 }

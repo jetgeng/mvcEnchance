@@ -1,7 +1,7 @@
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
 import org.apache.commons.validator.CreditCardValidator;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 public class CreditCardConstraint extends AbstractConstraint {
@@ -17,8 +17,8 @@ public class CreditCardConstraint extends AbstractConstraint {
 	        CreditCardValidator validator = new CreditCardValidator();
 	        if (!validator.isValid(propertyValue.toString())) {
 	            Object[] args = new Object[] { constraintPropertyName, constraintOwningClass, propertyValue };
-	            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_CREDIT_CARD_MESSAGE_CODE,
-	                    ConstrainedPropertyQunar.CREDIT_CARD_CONSTRAINT + ConstrainedPropertyQunar.INVALID_SUFFIX, args);
+	            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_CREDIT_CARD_MESSAGE_CODE,
+                        ConstrainedPropertyGunn.CREDIT_CARD_CONSTRAINT + ConstrainedPropertyGunn.INVALID_SUFFIX, args);
 	        }
 	        
 	    }
@@ -27,7 +27,7 @@ public class CreditCardConstraint extends AbstractConstraint {
 	    public void setParameter(Object constraintParameter) {
 	        if (!(constraintParameter instanceof Boolean)) {
 	            throw new IllegalArgumentException("Parameter for constraint [" +
-	                    ConstrainedPropertyQunar.CREDIT_CARD_CONSTRAINT + "] of property [" +
+                        ConstrainedPropertyGunn.CREDIT_CARD_CONSTRAINT + "] of property [" +
 	                    constraintPropertyName + "] of class [" +
 	                    constraintOwningClass + "] must be a boolean value");
 	        }
@@ -37,7 +37,7 @@ public class CreditCardConstraint extends AbstractConstraint {
 	    }
 
 	    public String getName() {
-	        return ConstrainedPropertyQunar.CREDIT_CARD_CONSTRAINT;
+	        return ConstrainedPropertyGunn.CREDIT_CARD_CONSTRAINT;
 	    }
 
 	    @SuppressWarnings("rawtypes")

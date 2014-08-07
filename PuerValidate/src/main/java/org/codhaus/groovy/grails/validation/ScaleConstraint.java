@@ -14,8 +14,8 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.validation.Errors;
@@ -65,7 +65,7 @@ public class ScaleConstraint extends AbstractConstraint {
      * @see org.codehaus.groovy.org.codhaus.groovy.grails.validation.Constraint#getName()
      */
     public String getName() {
-        return ConstrainedPropertyQunar.SCALE_CONSTRAINT;
+        return ConstrainedPropertyGunn.SCALE_CONSTRAINT;
     }
 
     /**
@@ -101,7 +101,7 @@ public class ScaleConstraint extends AbstractConstraint {
 
     /**
      * {@inheritDoc}
-     * @see org.codehaus.groovy.grails.validation.AbstractConstraint#processValidate(
+     *
      *     Object, Object, org.springframework.validation.Errors)
      */
     @Override

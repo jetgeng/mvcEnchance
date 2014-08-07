@@ -1,8 +1,8 @@
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.EmailValidator;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 public class EmailConstraint extends AbstractConstraint {
@@ -24,7 +24,7 @@ public class EmailConstraint extends AbstractConstraint {
 	    public void setParameter(Object constraintParameter) {
 	        if (!(constraintParameter instanceof Boolean)) {
 	            throw new IllegalArgumentException("Parameter for constraint [" +
-	                    ConstrainedPropertyQunar.EMAIL_CONSTRAINT + "] of property [" +
+                        ConstrainedPropertyGunn.EMAIL_CONSTRAINT + "] of property [" +
 	                    constraintPropertyName + "] of class [" + constraintOwningClass +
 	                    "] must be a boolean value");
 	        }
@@ -34,7 +34,7 @@ public class EmailConstraint extends AbstractConstraint {
 	    }
 
 	    public String getName() {
-	        return ConstrainedPropertyQunar.EMAIL_CONSTRAINT;
+	        return ConstrainedPropertyGunn.EMAIL_CONSTRAINT;
 	    }
 
 	    @Override
@@ -51,8 +51,8 @@ public class EmailConstraint extends AbstractConstraint {
 	        }
 
 	        if (!emailValidator.isValid(value)) {
-	            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_EMAIL_MESSAGE_CODE,
-	            		ConstrainedPropertyQunar.EMAIL_CONSTRAINT + ConstrainedPropertyQunar.INVALID_SUFFIX, args);
+	            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_EMAIL_MESSAGE_CODE,
+                        ConstrainedPropertyGunn.EMAIL_CONSTRAINT + ConstrainedPropertyGunn.INVALID_SUFFIX, args);
 	        }
 	    }
 

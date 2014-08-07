@@ -17,11 +17,9 @@ package org.codhaus.groovy.grails.validation.ext;
 
 import groovy.lang.MissingPropertyException;
 import groovy.lang.Range;
-import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codhaus.groovy.grails.validation.BlankConstraint;
-import org.codhaus.groovy.grails.validation.CascadeConstraint;
 import org.codhaus.groovy.grails.validation.Constraint;
 import org.codhaus.groovy.grails.validation.ConstraintFactory;
 import org.codhaus.groovy.grails.validation.CreditCardConstraint;
@@ -39,6 +37,7 @@ import org.codhaus.groovy.grails.validation.ScaleConstraint;
 import org.codhaus.groovy.grails.validation.SizeConstraint;
 import org.codhaus.groovy.grails.validation.UrlConstraint;
 import org.codhaus.groovy.grails.validation.ValidatorConstraint;
+import org.codhaus.groovy.grails.validation.VetoingConstraint;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.context.MessageSource;
@@ -208,12 +207,14 @@ public class ConstrainedPropertyGunn {
         constraints.put(VALIDATOR_CONSTRAINT, new ArrayList<Object>() {{
             add(ValidatorConstraint.class);
         }});
+        /*
         constraints.put(CASCADE_CONSTRAINT, new ArrayList<Object>() {{
 			add(CascadeConstraint.class);
 		}});
+		*/
     }
 
-    protected static final Log LOG = LogFactory.getLog(ConstrainedPropertyQunar.class);
+    protected static final Log LOG = LogFactory.getLog(ConstrainedPropertyGunn.class);
 
     // move these to subclass
 
@@ -1073,17 +1074,25 @@ public class ConstrainedPropertyGunn {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                   .append(owningClass)
-                   .append(propertyName)
-                   .append(propertyType)
-                   .append(appliedConstraints)
-                   .toString();
+        final StringBuilder sb = new StringBuilder("ConstrainedPropertyGunn{");
+        sb.append("propertyName='").append(propertyName).append('\'');
+        sb.append(", propertyType=").append(propertyType);
+        sb.append(", appliedConstraints=").append(appliedConstraints);
+        sb.append(", owningClass=").append(owningClass);
+        sb.append(", bean=").append(bean);
+        sb.append(", display=").append(display);
+        sb.append(", editable=").append(editable);
+        sb.append(", order=").append(order);
+        sb.append(", format='").append(format).append('\'');
+        sb.append(", widget='").append(widget).append('\'');
+        sb.append(", password=").append(password);
+        sb.append(", attributes=").append(attributes);
+        sb.append(", messageSource=").append(messageSource);
+        sb.append(", metaConstraints=").append(metaConstraints);
+        sb.append('}');
+        return sb.toString();
     }
 
     /**

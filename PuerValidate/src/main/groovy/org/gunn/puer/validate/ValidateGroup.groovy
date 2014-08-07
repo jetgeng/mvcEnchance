@@ -1,7 +1,6 @@
 package org.gunn.puer.validate
 
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar
 import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn
 import org.springframework.beans.BeanWrapperImpl
 import org.springframework.validation.Errors;

@@ -14,9 +14,8 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.common.FlagshipMDC;
 import groovy.lang.Closure;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 import java.util.Collection;
@@ -80,9 +79,6 @@ public class ValidatorConstraint extends AbstractConstraint {
         // delegate as if they were already defined as local variables.
         final ValidatorDelegate delegate = new ValidatorDelegate();
         delegate.setPropertyName(getPropertyName());
-        //要把Validator MDC里的内容作为Script的Binding
-        validator.setProperty(FlagshipMDC.ROOT_TARGET, FlagshipMDC.get(FlagshipMDC.ROOT_TARGET));
-        validator.setProperty(FlagshipMDC.ROOT_VALIDATOR, FlagshipMDC.get(FlagshipMDC.ROOT_VALIDATOR));
         validator.setDelegate(delegate);
         //validator.setb
         // Execute the custom validation.
@@ -111,7 +107,7 @@ public class ValidatorConstraint extends AbstractConstraint {
                 Object[] values = (result instanceof Collection<?>) ? ((Collection<?>)result).toArray() : (Object[])result;
                 if (!(values[0] instanceof String)) {
                     throw new IllegalArgumentException("Return value from validation closure [" +
-                    		ConstrainedPropertyQunar.VALIDATOR_CONSTRAINT+"] of property ["+constraintPropertyName+"] of class [" +
+                            ConstrainedPropertyGunn.VALIDATOR_CONSTRAINT+"] of property ["+constraintPropertyName+"] of class [" +
                             constraintOwningClass+"] is returning a list but the first element must be a string " +
                             "containing the error message code");
                 }
@@ -125,7 +121,7 @@ public class ValidatorConstraint extends AbstractConstraint {
             }
             else {
                 throw new IllegalArgumentException("Return value from validation closure [" +
-                		ConstrainedPropertyQunar.VALIDATOR_CONSTRAINT+"] of property [" + constraintPropertyName +
+                        ConstrainedPropertyGunn.VALIDATOR_CONSTRAINT+"] of property [" + constraintPropertyName +
                         "] of class [" + constraintOwningClass +
                         "] must be a boolean, a string, an array or a collection");
             }
@@ -134,8 +130,8 @@ public class ValidatorConstraint extends AbstractConstraint {
             if (args == null) {
                 args = new Object[] { constraintPropertyName, constraintOwningClass, propertyValue };
             }
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_VALIDATOR_MESSAGE_CODE,
-                 errmsg == null ? ConstrainedPropertyQunar.VALIDATOR_CONSTRAINT + ConstrainedPropertyQunar.INVALID_SUFFIX: errmsg, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_VALIDATOR_MESSAGE_CODE,
+                 errmsg == null ? ConstrainedPropertyGunn.VALIDATOR_CONSTRAINT + ConstrainedPropertyGunn.INVALID_SUFFIX: errmsg, args);
         }
     }
 
@@ -143,7 +139,7 @@ public class ValidatorConstraint extends AbstractConstraint {
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof Closure)) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.VALIDATOR_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.VALIDATOR_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass + "] must be a Closure");
         }
 
@@ -152,11 +148,11 @@ public class ValidatorConstraint extends AbstractConstraint {
         Class<?>[] params = validator.getParameterTypes();
         // Groovy should always force one parameter, but let's check anyway...
         if (params.length == 0) {
-            throw new IllegalArgumentException("Parameter for constraint ["+ConstrainedPropertyQunar.VALIDATOR_CONSTRAINT+"] of property ["+constraintPropertyName+"] of class ["+constraintOwningClass+"] must be a Closure taking at least 1 parameter (value, [object])");
+            throw new IllegalArgumentException("Parameter for constraint ["+ConstrainedPropertyGunn.VALIDATOR_CONSTRAINT+"] of property ["+constraintPropertyName+"] of class ["+constraintOwningClass+"] must be a Closure taking at least 1 parameter (value, [object])");
         }
 
         if (params.length > 3) {
-            throw new IllegalArgumentException("Parameter for constraint ["+ConstrainedPropertyQunar.VALIDATOR_CONSTRAINT+"] of property ["+constraintPropertyName+"] of class ["+constraintOwningClass+"] must be a Closure taking no more than 3 parameters (value, [object, [errors]])");
+            throw new IllegalArgumentException("Parameter for constraint ["+ConstrainedPropertyGunn.VALIDATOR_CONSTRAINT+"] of property ["+constraintPropertyName+"] of class ["+constraintOwningClass+"] must be a Closure taking no more than 3 parameters (value, [object, [errors]])");
         }
 
         numValidatorParams = params.length;
@@ -165,7 +161,7 @@ public class ValidatorConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.VALIDATOR_CONSTRAINT;
+        return ConstrainedPropertyGunn.VALIDATOR_CONSTRAINT;
     }
 
     public boolean supports(Class type) {

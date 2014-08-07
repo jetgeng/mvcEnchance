@@ -2,7 +2,6 @@ package org.gunn.puer.validate
 
 import org.springframework.validation.Errors
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar
 
 class POJOValidatorRule extends ValidateGroup {
 	String siteFilter

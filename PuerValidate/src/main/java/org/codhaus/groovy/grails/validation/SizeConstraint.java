@@ -14,8 +14,8 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
 import groovy.lang.IntRange;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 import java.lang.reflect.Array;
@@ -57,7 +57,7 @@ public class SizeConstraint extends AbstractConstraint {
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof IntRange)) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.SIZE_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.SIZE_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must be a of type [groovy.lang.IntRange]");
         }
@@ -67,7 +67,7 @@ public class SizeConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.SIZE_CONSTRAINT;
+        return ConstrainedPropertyGunn.SIZE_CONSTRAINT;
     }
 
     @SuppressWarnings("unchecked")
@@ -89,16 +89,16 @@ public class SizeConstraint extends AbstractConstraint {
 
         if (!range.contains(size)) {
             if (range.getFrom().compareTo(size) == 1) {
-                rejectValue(args, errors, target, ConstrainedPropertyQunar.TOOSMALL_SUFFIX);
+                rejectValue(args, errors, target, ConstrainedPropertyGunn.TOOSMALL_SUFFIX);
             }
             else if (range.getTo().compareTo(size) == -1) {
-                rejectValue(args, errors, target, ConstrainedPropertyQunar.TOOBIG_SUFFIX);
+                rejectValue(args, errors, target, ConstrainedPropertyGunn.TOOBIG_SUFFIX);
             }
         }
     }
 
     private void rejectValue(Object[] args, Errors errors, Object target, String suffix) {
-        rejectValue(target,errors, ConstrainedPropertyQunar.DEFAULT_INVALID_SIZE_MESSAGE_CODE,
-        		ConstrainedPropertyQunar.SIZE_CONSTRAINT + suffix, args);
+        rejectValue(target,errors, ConstrainedPropertyGunn.DEFAULT_INVALID_SIZE_MESSAGE_CODE,
+                ConstrainedPropertyGunn.SIZE_CONSTRAINT + suffix, args);
     }
 }

@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.validation.Errors
 import org.springframework.validation.Validator
 
-import com.qunar.flight.flagship.system.AppContext
-import com.qunar.org.codhaus.groovy.grails.common.FlagshipMDC
 
 class ValidatorConfigManager implements Validator{
 
@@ -16,7 +14,7 @@ class ValidatorConfigManager implements Validator{
 
 	def init(){
 		logger.info("init the validator config manager with validator.properties")
-		def url = getClass().getClassLoader().getResource("validator.qr")
+		def url = getClass().getClassLoader().getResource("validator.groovy")
 		String configContext
 		new File(url.getFile()).each{ it ->  configContext = configContext + "\n" + it}
 		logger.info(configContext)
@@ -77,7 +75,7 @@ class ValidatorConfigManager implements Validator{
 
 
 	def getValidateRule(Class<?> clazz){
-		def rule = validateRuleContainer[AppContext.getSite()]?.get(clazz.getName())
+		def rule = null
 		logger.debug("the all rule is:" + validateRuleContainer)
 		return rule?:validateRuleContainer["*"]?.get(clazz.getName())
 	}

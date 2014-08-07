@@ -1,6 +1,6 @@
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class InListConstraint extends AbstractConstraint {
     public void setParameter(Object constraintParameter) {
         if (!(constraintParameter instanceof List<?>)) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.IN_LIST_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.IN_LIST_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must implement the interface [java.util.List]");
         }
@@ -41,7 +41,7 @@ public class InListConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.IN_LIST_CONSTRAINT;
+        return ConstrainedPropertyGunn.IN_LIST_CONSTRAINT;
     }
 
     @Override
@@ -49,8 +49,8 @@ public class InListConstraint extends AbstractConstraint {
         // Check that the list contains the given value. If not, add an error.
         if (!list.contains(propertyValue)) {
             Object[] args = new Object[] { constraintPropertyName, constraintOwningClass, propertyValue, list };
-            rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_NOT_INLIST_MESSAGE_CODE,
-            		ConstrainedPropertyQunar.NOT_PREFIX + ConstrainedPropertyQunar.IN_LIST_CONSTRAINT, args);
+            rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_NOT_INLIST_MESSAGE_CODE,
+                    ConstrainedPropertyGunn.NOT_PREFIX + ConstrainedPropertyGunn.IN_LIST_CONSTRAINT, args);
         }
     }
 

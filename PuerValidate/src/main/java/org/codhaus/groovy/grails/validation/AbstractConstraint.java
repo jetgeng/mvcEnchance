@@ -2,11 +2,10 @@ package org.codhaus.groovy.grails.validation;
 
 //import org.codhaus.groovy.grails.util.GrailsNameUtils;
 
-import com.qunar.flight.flagship.system.AppContext;
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.common.GrailsNameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.codhaus.groovy.grails.common.GrailsNameUtils;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -41,7 +40,7 @@ public abstract class AbstractConstraint implements Constraint{
 
 	    /**
 	     * {@inheritDoc}
-	     * @see org.codehaus.groovy.grails.validation.Constraint#setOwningClass(Class)
+	     *
 	     */
 	    @SuppressWarnings("rawtypes")
 	    public void setOwningClass(Class constraintOwningClass) {
@@ -156,9 +155,9 @@ public abstract class AbstractConstraint implements Constraint{
 	        //newCodes.addAll(Arrays.asList(result.resolveMessageCodes(classShortName + '.'  + constraintPropertyName + '.' + getName() + ".error", constraintPropertyName)));
 	        for (String code : codes) {
 	            newCodes.addAll(Arrays.asList(result.resolveMessageCodes(constraintOwningClass.getName() + '.' + constraintPropertyName + '.' + code, constraintPropertyName)));
-	            newCodes.addAll(Arrays.asList(result.resolveMessageCodes(AppContext.getSite() + '.' + constraintOwningClass.getName() + '.' + constraintPropertyName + '.' + code, constraintPropertyName)));
+	            //newCodes.addAll(Arrays.asList(result.resolveMessageCodes(AppContext.getSite() + '.' + constraintOwningClass.getName() + '.' + constraintPropertyName + '.' + code, constraintPropertyName)));
 	            newCodes.addAll(Arrays.asList(result.resolveMessageCodes(classShortName + '.' + constraintPropertyName + '.' + code, constraintPropertyName)));
-	            newCodes.addAll(Arrays.asList(result.resolveMessageCodes(AppContext.getSite() + '.' + classShortName + '.' + constraintPropertyName + '.' + code, constraintPropertyName)));
+	            //newCodes.addAll(Arrays.asList(result.resolveMessageCodes(AppContext.getSite() + '.' + classShortName + '.' + constraintPropertyName + '.' + code, constraintPropertyName)));
 	            //We resolve the error code on it's own last so that a global code doesn't override a class/field specific error
 	            newCodes.addAll(Arrays.asList(result.resolveMessageCodes(code, constraintPropertyName)));
 	        }
@@ -216,10 +215,10 @@ public abstract class AbstractConstraint implements Constraint{
 	                return messageSource.getMessage(code, null, LocaleContextHolder.getLocale());
 	            }
 
-	            return ConstrainedPropertyQunar.DEFAULT_MESSAGES.get(code);
+	            return ConstrainedPropertyGunn.DEFAULT_MESSAGES.get(code);
 	        }
 	        catch (Exception e) {
-	            return ConstrainedPropertyQunar.DEFAULT_MESSAGES.get(code);
+	            return ConstrainedPropertyGunn.DEFAULT_MESSAGES.get(code);
 	        }
 	    }
 

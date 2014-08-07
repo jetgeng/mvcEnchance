@@ -14,8 +14,8 @@
  */
 package org.codhaus.groovy.grails.validation;
 
-import com.qunar.flight.flagship.validate.ext.ConstrainedPropertyQunar;
-import com.qunar.org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.common.GrailsClassUtils;
+import org.codhaus.groovy.grails.validation.ext.ConstrainedPropertyGunn;
 import org.springframework.validation.Errors;
 
 /**
@@ -52,20 +52,20 @@ public class MinConstraint extends AbstractConstraint {
     public void setParameter(Object constraintParameter) {
         if (constraintParameter == null) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.MIN_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.MIN_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass + "] cannot be null");
         }
 
         if (!(constraintParameter instanceof Comparable<?>) && (!constraintParameter.getClass().isPrimitive())) {
             throw new IllegalArgumentException("Parameter for constraint [" +
-            		ConstrainedPropertyQunar.MIN_CONSTRAINT + "] of property [" +
+                    ConstrainedPropertyGunn.MIN_CONSTRAINT + "] of property [" +
                     constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must implement the interface [java.lang.Comparable]");
         }
 
         Class<?> propertyClass = GrailsClassUtils.getPropertyType(constraintOwningClass, constraintPropertyName);
         if (!GrailsClassUtils.isAssignableOrConvertibleFrom(constraintParameter.getClass(),propertyClass)) {
-            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyQunar.MIN_CONSTRAINT +
+            throw new IllegalArgumentException("Parameter for constraint [" + ConstrainedPropertyGunn.MIN_CONSTRAINT +
                     "] of property [" + constraintPropertyName + "] of class [" + constraintOwningClass +
                     "] must be the same type as property: [" + propertyClass.getName() + "]");
         }
@@ -75,7 +75,7 @@ public class MinConstraint extends AbstractConstraint {
     }
 
     public String getName() {
-        return ConstrainedPropertyQunar.MIN_CONSTRAINT;
+        return ConstrainedPropertyGunn.MIN_CONSTRAINT;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class MinConstraint extends AbstractConstraint {
         }
 
         Object[] args = new Object[] { constraintPropertyName, constraintOwningClass, propertyValue, minValue };
-        rejectValue(target, errors, ConstrainedPropertyQunar.DEFAULT_INVALID_MIN_MESSAGE_CODE,
-        		ConstrainedPropertyQunar.MIN_CONSTRAINT + ConstrainedPropertyQunar.NOTMET_SUFFIX, args);
+        rejectValue(target, errors, ConstrainedPropertyGunn.DEFAULT_INVALID_MIN_MESSAGE_CODE,
+                ConstrainedPropertyGunn.MIN_CONSTRAINT + ConstrainedPropertyGunn.NOTMET_SUFFIX, args);
     }
 }
