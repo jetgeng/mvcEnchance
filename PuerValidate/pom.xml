@@ -37,8 +37,12 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.0.7</version>
+            <!-- If possible, its better if this matches 2.1.8 in the plugin definition -->
+            <!-- but 2.2.1 worked fine here and allowed me to keep the original pom definition  -->
+            <version>2.2.1</version>
         </dependency>
+
+
 
         <dependency>
             <groupId>commons-validator</groupId>
@@ -85,6 +89,12 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-backports-compat23</artifactId>
+            <version>2.3.5</version>
         </dependency>
 
     </dependencies>
